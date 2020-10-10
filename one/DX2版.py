@@ -338,11 +338,11 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
     # 重置按键的方法（已完成）
     def update_all(self):
-        self.check_all('off') #清空账号复选框
-        self.logtext.clear()   # 清空日志栏
-        self.filename = None    # 清空打开的文件路径
-        self.zhongzhi.setDate(QtCore.QDate(year, month, day))# 重置起始时间到今天
-        self.qishi.setDate(QtCore.QDate(year, month, day))# 重置终止时间
+        self.check_all('off')  # 清空账号复选框
+        self.logtext.clear()  # 清空日志栏
+        self.filename = None  # 清空打开的文件路径
+        self.zhongzhi.setDate(QtCore.QDate(year, month, day))  # 重置起始时间到今天
+        self.qishi.setDate(QtCore.QDate(year, month, day))  # 重置终止时间
         # 将一个空的表传入（清空表栏）
         df = pd.DataFrame()
         model = pandasModel(df)
@@ -407,7 +407,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
             sheet = int(self.sheet[0])
             if self.filename == None: # 判断如果没有选择特定文件就需要进行验证，读取数据库文件
                 if self.yzpass == True:
-                    path = '6月数据.xlsx' # 模拟数据库文件
+                    path = '全年数据.xlsx' # 模拟数据库文件
                 else:
                     self.logtext.append('<font color=\"#FF0000\">请进行验证或打开文件</font>')
                     path = None
@@ -417,7 +417,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
                 self.logtext.append(f'文件<{file_name[0]}>,数据查询成功')
 
             if path != None:
-                dictywl = shaixuan_3(path, sheet, dtimes, self.zhanghao_box)
+                dictywl = DateFarm(path, sheet, dtimes, self.zhanghao_box)
                 self.df = pd.DataFrame(dictywl)
                 model = pandasModel(self.df)
                 self.maintext.setModel(model)

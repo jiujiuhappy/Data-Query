@@ -78,4 +78,4 @@ def DateFarm(path, sheet, dtimes, zhanghaos):
 
 
 if __name__ == '__main__':
-    shaixuan_3('6月数据.xlsx', 'ORG', ['2018/06/01','2018/06/02','2018/06/03'], ['hangye', 'dianshang', 'mmsc'])
+    DateFarm('全年数据.xlsx', 'ORG', ['2018/06/01','2018/06/02','2018/06/03'], ['hangye', 'dianshang', 'mmsc'])
